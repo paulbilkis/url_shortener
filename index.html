@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>URL shortener</title>
+<script type="text/javascript">
+function send_form() {
+ var XHR = new XMLHttpRequest();
+ var form = document.getElementById("url_add");
+ var FD = new FormData(form);
+ var div_res = document.getElementById("result");
+
+ XHR.addEventListener("load", function(event) {
+     div_res.innerHTML = event.target.responseText;
+   });
+
+ var params = 'action=' + encodeURIComponent(FD.get("action")) +
+ '&url=' + encodeURIComponent(FD.get("url")) + '&user_url=' + encodeURIComponent(FD.get("user_url"));
+
+ XHR.open("GET", "/url.php?" + params, true);
+
+ XHR.send(FD);
+}
+
+</script>
+</head>
+<body>
+
+<h1>URL shortener</h1>
+
+<p>Enter an URL:</p>
+<form id="url_add">
+	<input type="text" name="url"/>
+        <input type="hidden" name="action" value="add"/>
+	<p>Пользовательский адрес (цифры и латинские буквы, оставьте пустым для автоматической генерации):</p>
+	http://cr08919.tmweb.ru/<input type="text" name="user_url"/>
+	<p><input type="button" value="Send" onclick="send_form()"/></p>
+</form>
+<div id="result"></div>
+</body>
+</html>
