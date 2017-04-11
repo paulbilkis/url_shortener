@@ -3,6 +3,7 @@
 <head>
 <title>URL shortener</title>
 <script type="text/javascript">
+
 function send_form() {
  var XHR = new XMLHttpRequest();
  var form = document.getElementById("url_add");
@@ -30,7 +31,7 @@ function send_form() {
 <p>Enter an URL:</p>
 <form id="url_add">
 	<input type="text" name="url"/>
-        <input type="hidden" name="action" value="add"/>
+	<input type="hidden" name="action" value="add"/>
 	<p>Пользовательский адрес (цифры и латинские буквы, оставьте пустым для автоматической генерации):</p>
 	http://cr08919.tmweb.ru/<input type="text" name="user_url"/>
 	<p><input type="button" value="Send" onclick="send_form()"/></p>
